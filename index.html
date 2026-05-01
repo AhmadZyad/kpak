@@ -2,78 +2,32 @@
 <html lang="ckb" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5, user-scalable=yes" name="viewport">
-<meta content="ie=edge" http-equiv="x-ua-compatible">
-<title>کوڕی پاک | Kuri Pak - ئەرشیڤی ڤیدیۆیی ئیسلامی</title>
-<meta content="ئەرشیڤی ڤیدیۆیی وتار و وانەکانی مامۆستا کوڕی پاک" name="description">
-<meta content="index, follow" name="robots">
-
-<!-- CSS / Fonts -->
-<link href="https://fonts.googleapis.com" rel="preconnect">
-<link crossorigin="anonymous" href="https://fonts.gstatic.com" rel="preconnect">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>کوڕی پاک | Kuri Pak</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-
 <style>
-/* ------------------------------------------------------------------
-   المتغيرات الأساسية وتصميم الموقع (الـ CSS الأصلي الخاص بك)
------------------------------------------------------------------- */
-:root{
---primary:#1b6b5e;--primary-hover:#0f4a3f;--primary-light:rgba(27,107,94,.12);
---accent:#c4992a;
---bg-body:#eef0eb;--bg-surface:#ffffff;--bg-hover:#e8ebe2;
---text-main:#141814;--text-muted:#5e6b68;
---border-color:#d8d4c8;
---radius:18px;
---font-family:'IBM Plex Sans Arabic',sans-serif;
---shadow-sm:0 2px 8px rgba(0,0,0,.07);
---shadow-md:0 6px 28px rgba(0,0,0,.13);
---header-h:64px;
---transition:.22s cubic-bezier(.4,0,.2,1);
---glass-bg:rgba(255,255,255,.72);
---glass-border:rgba(255,255,255,.55);
-}
-body.dark{
---primary:#3dada0;--primary-hover:#2e8a80;--primary-light:rgba(61,173,160,.15);
---bg-body:#080e0c;--bg-surface:#0f1a17;--bg-hover:#172320;
---text-main:#deeae8;--text-muted:#7a9490;
---border-color:#1e3030;
---glass-bg:rgba(15,26,23,.82);
-}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
-body{font-family:var(--font-family);background:var(--bg-body);color:var(--text-main);line-height:1.75;transition:background var(--transition),color var(--transition);min-height:100vh;display:flex;flex-direction:column;}
+:root{ --primary:#1b6b5e; --primary-light:rgba(27,107,94,.12); --bg-body:#eef0eb; --bg-surface:#ffffff; --text-main:#141814; --text-muted:#5e6b68; --border-color:#d8d4c8; --radius:18px; --font-family:'IBM Plex Sans Arabic',sans-serif; --shadow-sm:0 2px 8px rgba(0,0,0,.07); --shadow-md:0 6px 28px rgba(0,0,0,.13);}
+body.dark{ --primary:#3dada0; --bg-body:#080e0c; --bg-surface:#0f1a17; --text-main:#deeae8; --text-muted:#7a9490; --border-color:#1e3030;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--font-family);background:var(--bg-body);color:var(--text-main);min-height:100vh;display:flex;flex-direction:column; transition:0.3s;}
 a{text-decoration:none;color:inherit;}
-img{max-width:100%;height:auto;display:block;}
-button{cursor:pointer;outline:none; border:none; background:transparent;}
-
-/* ------------------------------------------------------------------
-   تصميم الهيدر والبحث
------------------------------------------------------------------- */
-.header{position:sticky;top:0;background:var(--glass-bg);backdrop-filter:blur(28px);height:var(--header-h);z-index:1000;border-bottom:1px solid var(--glass-border);box-shadow:var(--shadow-sm);}
-.header-inner{display:flex;align-items:center;justify-content:space-between;height:100%;padding:0 16px;}
-.site-title{font-size:20px;font-weight:800;color:var(--text-main);}
-.site-title span{color:var(--primary);}
-.header-left{display:flex;gap:10px;align-items:center;}
-.icon-btn{font-size:19px;color:var(--text-main);width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:var(--transition);}
+.header{position:sticky;top:0;background:var(--bg-surface);height:64px;z-index:1000;border-bottom:1px solid var(--border-color);box-shadow:var(--shadow-sm);}
+.header-inner{display:flex;align-items:center;justify-content:space-between;height:100%;padding:0 16px;max-width:1100px;margin:0 auto;}
+.site-title{font-size:20px;font-weight:800;color:var(--text-main);} .site-title span{color:var(--primary);}
+.icon-btn{font-size:19px;color:var(--text-main);width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:none;border:none;cursor:pointer;}
 .icon-btn:hover{background:var(--primary-light);color:var(--primary);}
-
-/* شريط البحث */
-.search-container{position:relative; display:flex; align-items:center; background:var(--bg-surface); border:1px solid var(--border-color); border-radius:20px; padding:5px 15px;}
+.search-container{position:relative; display:flex; align-items:center; background:var(--bg-body); border:1px solid var(--border-color); border-radius:20px; padding:5px 15px;}
 .search-container input{border:none; background:transparent; outline:none; padding:5px; color:var(--text-main); font-family:var(--font-family); width:200px;}
 .kp-suggestions{position:absolute; top:100%; left:0; right:0; background:var(--bg-surface); border-radius:10px; box-shadow:var(--shadow-md); display:none; max-height:300px; overflow-y:auto; z-index:2000; border:1px solid var(--border-color); margin-top:5px;}
 .kp-suggestions.open{display:block;}
-.kp-sugg-item{display:flex; gap:10px; padding:10px; border-bottom:1px solid var(--border-color); transition:var(--transition);}
+.kp-sugg-item{display:flex; gap:10px; padding:10px; border-bottom:1px solid var(--border-color);}
 .kp-sugg-item:hover{background:var(--primary-light);}
 .kp-sugg-thumb{width:60px; height:40px; border-radius:5px; object-fit:cover;}
 .kp-sugg-title{font-size:13px; font-weight:600;}
-
-/* ------------------------------------------------------------------
-   تصميم كروت الفيديو (Grid)
------------------------------------------------------------------- */
-.container{max-width:900px;margin:20px auto;padding:0 16px;width:100%; flex:1;}
+.container{max-width:1100px;margin:20px auto;padding:0 16px;width:100%; flex:1;}
 .post-list-grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));gap:20px;}
-.post-card-item{background:var(--bg-surface);border-radius:var(--radius);overflow:hidden;border:1px solid var(--border-color);display:flex;flex-direction:column;transition:var(--transition); box-shadow:var(--shadow-sm);}
+.post-card-item{background:var(--bg-surface);border-radius:var(--radius);overflow:hidden;border:1px solid var(--border-color);display:flex;flex-direction:column; box-shadow:var(--shadow-sm); transition:0.3s;}
 .post-card-item:hover{transform:translateY(-5px);box-shadow:var(--shadow-md); border-color:var(--primary);}
 .post-card-thumb{position:relative;width:100%;padding-top:56.25%;background:#000;}
 .post-card-thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
@@ -82,163 +36,86 @@ button{cursor:pointer;outline:none; border:none; background:transparent;}
 .card-label-badge{position:absolute;top:10px;right:10px;background:var(--primary);color:#fff;font-size:11px;padding:3px 10px;border-radius:15px; font-weight:bold;}
 .post-card-info{padding:15px; flex:1; display:flex; flex-direction:column;}
 .post-card-title{font-size:15px;font-weight:700;color:var(--text-main);line-height:1.6;}
-.post-date{font-size:12px;color:var(--text-muted);margin-top:auto; padding-top:10px;}
-
-/* الفوتر */
 .footer-section{background:var(--bg-surface);padding:30px;text-align:center;border-top:1px solid var(--border-color);margin-top:40px;}
 </style>
+<!-- استدعاء ملف قاعدة البيانات -->
+<script src="data.js"></script>
 </head>
 <body>
 
-<!-- الهيدر -->
 <header class="header">
   <div class="header-inner">
     <div class="header-right">
       <a class="site-title" href="index.html">کوڕی <span>پاک</span></a>
     </div>
-    
     <div class="header-left">
-      <!-- شريط البحث المستقل -->
       <div class="search-container">
         <i class="fa-solid fa-magnifying-glass" style="color:var(--text-muted)"></i>
         <input type="text" id="searchInput" placeholder="گەڕان بۆ ڤیدیۆ...">
         <div class="kp-suggestions" id="searchResults"></div>
       </div>
-      
       <button class="icon-btn" id="dark-toggle" onclick="toggleTheme()"><i class="fa-solid fa-moon"></i></button>
     </div>
   </div>
 </header>
 
-<!-- المحتوى الرئيسي (جريد الفيديوهات) -->
-<div id="content-wrapper">
-  <div class="container">
-    <div class="post-list-grid" id="videoGrid">
-      <!-- سيتم حقن الفيديوهات هنا بواسطة جافاسكربت -->
-    </div>
-  </div>
+<div class="container">
+    <div class="post-list-grid" id="videoGrid"></div>
 </div>
 
-<!-- الفوتر -->
 <footer class="footer-section">
   <div class="site-title">کوڕی <span>پاک</span></div>
   <p style="font-size:13px; color:var(--text-muted); margin-top:10px;">سەرجەم مافەکان پارێزراوە © 2024</p>
 </footer>
 
-<!-- السكربت المستقل بالكامل -->
 <script>
-// 1. قاعدة البيانات المحلية (Local Database)
-// هنا تضع جميع فيديوهاتك بدلاً من بلوجر. يمكنك إضافة آلاف الفيديوهات هنا.
-const VIDEO_DATABASE = [
-    {
-        id: 1,
-        title: "وتارى هەینی (١٦) : بۆ لەسەر دینا ئیهانەمان دەکەن ؟!",
-        category: "وتاری هەینی",
-        date: "25/04/2026",
-        thumb: "https://lh3.googleusercontent.com/blogger_img_proxy/AEn0k_tSHnBtu42Ey0OZjIExC8g5H-KNrtqp5t9pqHTJf_l8LQ-y5NXNo8M2ia_cKjgW3309ZbplMxXStKAWZsiI-1qd_9422I2xcrgYzBSOwTxoG5hn1ypvbxjgDnfmMWi3fyAg9oZOFjDEwlnY5Y-c-8THuj1K1uRywVUl_GToLURvtzxMjm8PTN8Xa7gHLXBKtBvddFC0WBetBM7TOvspOKYZtQI_yIxhUynEic8emnPDLmUxZgBXNzzxQlz2=w1280-h720-p-k-no-nu",
-        url: "video.html?id=1" // صفحة تشغيل الفيديو (سننشئها لاحقاً)
-    },
-    {
-        id: 2,
-        title: "وتاری هەینی (١٥) : ژن و مێرد ئاگاداربن ماڵ هەڵوەشایەوە",
-        category: "وتاری هەینی",
-        date: "18/04/2026",
-        thumb: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg90Sw4LZV65h570gGXLMAP35fdnYn804YQHNs4CC8nh4QeNnXxMIsRNOgftzKSH7HduDZk9mcqWdJSPKl9Eaq0CXgX7NNq76UiQqMsuwGs4Z8ew2SvrCyKRoy8hQeB7AV4LwHwTW5pD8hqyqf5rNeqBURs_kGE_u8QECVJqD4DycoT9gaxVp7OizdTrVpw/w1280-h720-p-k-no-nu/1000311645.png",
-        url: "video.html?id=2"
-    },
-    {
-        id: 3,
-        title: "وتاری هەینی (١٤) : زەنگی مەترسی دوای تێکچونی پەیوەندیە کۆمەڵایەتیەکان",
-        category: "ئامۆژگاری",
-        date: "11/04/2026",
-        thumb: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhtUSrDWnM5h8-yI_3TfUf1IsuOyAIXBst0HWFLUoyznuEi1zKCQ83e65lNznJpyVfC3I7HaoWKK_4OsGe0sJzT3penr2h_csu7l2eKlcLYSpEIDK5AR01qhLGAlZNiV3ZIt5_2pARhdt3FoB72e2PY3rRaqdcUfIvmzsW5NzoFzuffEXiclzvb12RL19kI/w1280-h720-p-k-no-nu/IMG_20260411_145745969.jpg",
-        url: "video.html?id=3"
-    }
-];
-
-// 2. دالة عرض الفيديوهات في الصفحة الرئيسية
+// عرض الفيديوهات من ملف data.js
 function renderVideos(videos) {
     const grid = document.getElementById('videoGrid');
-    grid.innerHTML = ''; // تفريغ الشبكة
-    
+    grid.innerHTML = ''; 
     videos.forEach(video => {
-        const card = `
-            <a class="post-card-item" href="${video.url}">
+        grid.innerHTML += `
+            <a class="post-card-item" href="video.html?id=${video.id}">
                 <div class="post-card-thumb">
                     <img src="${video.thumb}" alt="${video.title}">
-                    <div class="play-overlay">
-                        <div class="play-btn-circle"><i class="fa-solid fa-play"></i></div>
-                    </div>
+                    <div class="play-overlay"><div class="play-btn-circle"><i class="fa-solid fa-play"></i></div></div>
                     <span class="card-label-badge">${video.category}</span>
                 </div>
                 <div class="post-card-info">
                     <h3 class="post-card-title">${video.title}</h3>
-                    <div class="post-date"><i class="fa-regular fa-calendar"></i> ${video.date}</div>
                 </div>
             </a>
         `;
-        grid.innerHTML += card;
     });
 }
-
-// عرض جميع الفيديوهات عند تحميل الصفحة
 renderVideos(VIDEO_DATABASE);
 
-// 3. نظام البحث المستقل بالكامل (بدون سيرفر)
-const searchInput = document.getElementById('searchInput');
-const searchResults = document.getElementById('searchResults');
-
-searchInput.addEventListener('input', function() {
+// محرك البحث
+document.getElementById('searchInput').addEventListener('input', function() {
     const query = this.value.toLowerCase().trim();
-    searchResults.innerHTML = '';
+    const results = document.getElementById('searchResults');
+    results.innerHTML = '';
+    if(query.length < 2) { results.classList.remove('open'); return; }
     
-    if(query.length < 2) {
-        searchResults.classList.remove('open');
-        return;
-    }
-
-    // البحث داخل المصفوفة
-    const filtered = VIDEO_DATABASE.filter(v => v.title.toLowerCase().includes(query) || v.category.includes(query));
-
+    const filtered = VIDEO_DATABASE.filter(v => v.title.toLowerCase().includes(query));
     if(filtered.length === 0) {
-        searchResults.innerHTML = '<div style="padding:15px; text-align:center; color:var(--text-muted);">هیچ بابەتێک نەدۆزرایەوە</div>';
+        results.innerHTML = '<div style="padding:15px; text-align:center;">هیچ بابەتێک نەدۆزرایەوە</div>';
     } else {
         filtered.forEach(v => {
-            searchResults.innerHTML += `
-                <a href="${v.url}" class="kp-sugg-item">
-                    <img src="${v.thumb}" class="kp-sugg-thumb">
-                    <div style="flex:1;">
-                        <div class="kp-sugg-title">${v.title}</div>
-                        <div style="font-size:11px; color:var(--primary);">${v.category}</div>
-                    </div>
-                </a>
-            `;
+            results.innerHTML += `<a href="video.html?id=${v.id}" class="kp-sugg-item"><img src="${v.thumb}" class="kp-sugg-thumb"><div><div class="kp-sugg-title">${v.title}</div></div></a>`;
         });
     }
-    searchResults.classList.add('open');
+    results.classList.add('open');
 });
+document.addEventListener('click', (e) => { if(!e.target.closest('.search-container')) document.getElementById('searchResults').classList.remove('open'); });
 
-// إغلاق البحث عند النقر في الخارج
-document.addEventListener('click', (e) => {
-    if(!e.target.closest('.search-container')) {
-        searchResults.classList.remove('open');
-    }
-});
-
-// 4. نظام الوضع الليلي (Dark Mode)
+// الوضع الليلي
 function toggleTheme() {
     document.body.classList.toggle('dark');
-    const isDark = document.body.classList.contains('dark');
-    localStorage.setItem('kp_dark_mode', isDark ? 'yes' : 'no');
-    
-    const icon = document.querySelector('#dark-toggle i');
-    icon.className = isDark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+    localStorage.setItem('kp_dark_mode', document.body.classList.contains('dark') ? 'yes' : 'no');
+    document.querySelector('#dark-toggle i').className = document.body.classList.contains('dark') ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
 }
-
-// استرجاع الوضع الليلي عند تحميل الصفحة
-if(localStorage.getItem('kp_dark_mode') === 'yes') {
-    toggleTheme();
-}
+if(localStorage.getItem('kp_dark_mode') === 'yes') { toggleTheme(); }
 </script>
 </body>
 </html>
