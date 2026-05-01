@@ -74,8 +74,7 @@ const mainArea = document.getElementById('mainVideoArea');
 if(currentVideo) {
     mainArea.innerHTML = `
         <div class="video-player-container">
-            <iframe src="${currentVideo.videoSrc}?autoplay=1" allowfullscreen allow="autoplay"></iframe>
-        </div>
+<iframe src="${currentVideo.videoSrc}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>        </div>
         <div class="video-info">
             <h1 class="v-title">${currentVideo.title}</h1>
             <div class="v-meta"><i class="fa-solid fa-tag"></i> ${currentVideo.category}</div>
