@@ -34,9 +34,13 @@ a{text-decoration:none;color:inherit;}
 .rel-info{padding:10px 5px; flex:1;}
 .rel-title{font-size:13px; font-weight:600;}
 .footer-section{background:var(--bg-surface);padding:30px;text-align:center;border-top:1px solid var(--border-color);margin-top:40px;}
+.yt-fallback-btn{display:inline-block; margin-top:15px; padding:10px 15px; background:var(--primary-light); color:var(--primary); border-radius:10px; font-size:13px; font-weight:bold; transition:0.2s;}
+.yt-fallback-btn:hover{background:var(--primary); color:#fff;}
 </style>
+
 <!-- استدعاء ملف قاعدة البيانات -->
 <script src="data.js"></script>
+
 </head>
 <body>
 
@@ -46,7 +50,7 @@ a{text-decoration:none;color:inherit;}
       <a class="site-title" href="index.html">کوڕی <span>پاک</span></a>
     </div>
     <div class="header-left">
-      <a href="index.html" class="icon-btn"><i class="fa-solid fa-home"></i></a>
+      <a href="index.html" class="icon-btn" title="پەڕەی سەرەکی"><i class="fa-solid fa-home"></i></a>
       <button class="icon-btn" id="dark-toggle" onclick="toggleTheme()"><i class="fa-solid fa-moon"></i></button>
     </div>
   </div>
@@ -66,29 +70,58 @@ a{text-decoration:none;color:inherit;}
 </footer>
 
 <script>
+// جلب الآيدي من الرابط كنص (String) لتفادي أخطاء الأرقام الطويلة
 const urlParams = new URLSearchParams(window.location.search);
-const videoId = parseInt(urlParams.get('id'));
-const currentVideo = VIDEO_DATABASE.find(v => v.id === videoId);
+const videoIdStr = urlParams.get('id');
+
+// البحث عن الفيديو (مطابقة النص)
+const currentVideo = VIDEO_DATABASE.find(v => String(v.id) === String(videoIdStr));
 
 const mainArea = document.getElementById('mainVideoArea');
+
 if(currentVideo) {
+    // 1. تحويل رابط يوتيوب العادي إلى رابط No-Cookie لتخطي الحظر
+    let safeEmbedUrl = currentVideo.videoSrc;
+    if(safeEmbedUrl.includes('youtube.com')) {
+        safeEmbedUrl = safeEmbedUrl.replace('youtube.com', 'youtube-nocookie.com');
+    }
+
+    // 2. استخراج كود الفيديو لعمل زر الطوارئ
+    let ytCode = safeEmbedUrl.split('/').pop();
+
     mainArea.innerHTML = `
         <div class="video-player-container">
-<iframe src="${currentVideo.videoSrc}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>        </div>
+            <iframe src="${safeEmbedUrl}?rel=0&modestbranding=1" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+            </iframe>
+        </div>
+        
         <div class="video-info">
             <h1 class="v-title">${currentVideo.title}</h1>
-            <div class="v-meta"><i class="fa-solid fa-tag"></i> ${currentVideo.category}</div>
-            <div style="color:var(--text-muted);">${currentVideo.description}</div>
+            <div class="v-meta"><i class="fa-solid fa-tag"></i> ${currentVideo.category || 'ڤیدیۆ'}</div>
+            <div style="color:var(--text-muted);">${currentVideo.description || ''}</div>
+            
+            <!-- زر الطوارئ إذا استمرت الشاشة السوداء -->
+            <a href="https://www.youtube.com/watch?v=${ytCode}" target="_blank" class="yt-fallback-btn">
+                <i class="fa-brands fa-youtube"></i> ئەگەر ڤیدیۆکە کاری نەکرد، لێرە کلیک بکە بۆ سەیرکردن لە یوتیوب
+            </a>
         </div>
     `;
     document.title = currentVideo.title + " | Kuri Pak";
 } else {
-    mainArea.innerHTML = `<div class="video-info" style="text-align:center;"><h2>ببوورە، ئەم ڤیدیۆیە نەدۆزرایەوە!</h2><a href="index.html">گەڕانەوە</a></div>`;
+    mainArea.innerHTML = `<div class="video-info" style="text-align:center; padding:50px;">
+        <i class="fa-solid fa-triangle-exclamation" style="font-size:40px; color:var(--text-muted); margin-bottom:15px;"></i>
+        <h2>ببوورە، ئەم ڤیدیۆیە نەدۆزرایەوە!</h2>
+        <a href="index.html" class="yt-fallback-btn">گەڕانەوە بۆ پەڕەی سەرەکی</a>
+    </div>`;
 }
 
 // عرض الفيديوهات الجانبية
 const sidebar = document.getElementById('relatedVideos');
-const related = VIDEO_DATABASE.filter(v => v.id !== videoId).slice(0, 6);
+const related = VIDEO_DATABASE.filter(v => String(v.id) !== String(videoIdStr)).slice(0, 6);
+
 related.forEach(v => {
     sidebar.innerHTML += `
         <a href="video.html?id=${v.id}" class="rel-item">
@@ -104,7 +137,10 @@ function toggleTheme() {
     localStorage.setItem('kp_dark_mode', document.body.classList.contains('dark') ? 'yes' : 'no');
     document.querySelector('#dark-toggle i').className = document.body.classList.contains('dark') ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
 }
-if(localStorage.getItem('kp_dark_mode') === 'yes') { toggleTheme(); }
+if(localStorage.getItem('kp_dark_mode') === 'yes') { 
+    document.body.classList.add('dark');
+    document.querySelector('#dark-toggle i').className = 'fa-solid fa-sun';
+}
 </script>
 </body>
 </html>
